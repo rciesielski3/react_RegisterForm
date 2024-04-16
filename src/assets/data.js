@@ -1,4 +1,4 @@
-export const technologies = [
+export const preferredTechnology = [
   "JavaScript",
   "React",
   "Node.js",
@@ -7,3 +7,4 @@ export const technologies = [
 ];
 
 export const learningForms = ["Online", "Hybrydowa", "Stacjonarnie"];
+export const experienceYears = [1, 2, 3, 4, 5];

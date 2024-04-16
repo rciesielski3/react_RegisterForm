@@ -1,0 +1,96 @@
+h1 {
+  color: darkgreen;
+  text-align: center;
+}
+
+h2 {
+  color: orange;
+}
+
+.form-container {
+  width: 50%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #666;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container {
+  background-color: #333;
+  color: white;
+  width: 50%;
+  margin: auto;
+  border: 1px solid #666;
+  margin-top: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container > p,
+ul {
+  margin: 5px;
+  padding-left: 0px;
+}
+
+.formData-context {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+  border: 1px solid #666;
+  background-color: transparent;
+  color: white;
+}
+
+.deleteButton,
+.closeButton {
+  width: 28%;
+  background-color: #cb3a3a;
+  color: white;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  background-color: #666;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button[type="submit"] {
+  background-color: blue;
+}
+
+button.deleteButton {
+  background-color: rgba(255, 0, 0, 0.48);
+}
+
+button.experienceButton {
+  background-color: green;
+}
