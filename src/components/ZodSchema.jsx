@@ -1,42 +1,29 @@
 import * as z from "zod";
 
+const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
+
 const schema = z
   .object({
-    firstName: z.string().min(3, "Imię musi mieć co najmniej 3 znaki"),
-    lastName: z.string().min(3, "Nazwisko musi mieć co najmniej 3 znaki"),
-    email: z.string().email("Nieprawidłowy format adresu e-mail"),
-    phone: z.string().length(9, "Podaj prawidłowy numer telefonu"),
+    firstName: z.string().min(3, "Name must contain at least 3 characters"),
+    lastName: z.string().min(3, "Last name must contain at least 3 characters"),
+    email: z.string().email("Provide correct e-mail"),
+    phone: z.string().length(9, "Provide correct phone number"),
     learningForm: z
       .string()
+      .nullable()
       .refine((value) => value !== null && value.length > 0, {
-        message: "Wybierz formę nauki",
+        message: "Select learning form!",
       }),
     preferredTechnology: z
-      .array(z.string().nullable())
-      .refine(
-        (arr) => arr.every((value) => value !== null && value.length > 0),
-        {
-          message: "Wybierz technologię",
-        }
-      )
-      .optional(),
+      .array(z.string())
+      .min(1, { message: "Select at least 1 technology." }),
     hasExperience: z.boolean().optional(),
     cvImage: z
-      .object({
-        name: z.string(),
-        type: z.string(),
-      })
-      .refine((file) => {
-        return (
-          file.type === "image/jpeg" ||
-          file.type === "image/jpg" ||
-          file.type === "image/png"
-        );
-      }, "Musisz dodać załącznik jako zdjęcie.")
-      .refine((file) => {
-        return file.name.match(/\.(jpeg|jpg|png)$/i) !== null;
-      }, "Nieprawidłowy format pliku. Prześlij obraz w formacie JPEG lub PNG.")
-      .optional(),
+      .any()
+      .refine((file) => file?.length >= 1, { message: "Image is required." })
+      .refine((file) => ACCEPTED_IMAGE_TYPES.includes(file?.[0]?.type), {
+        message: ".jpg, .jpeg, .png and .webp files are accepted.",
+      }),
     programmingExperience: z
       .object({
         technology: z.string(),
@@ -69,7 +56,7 @@ const schema = z
     },
     {
       message:
-        "Jeśli zaznaczono doświadczenie w programowaniu, musisz wybrać co najmniej jedną preferowaną technologię oraz co najmniej jeden rok doświadczenia.",
+        "If programming experience is selected, you must select at least one preferred technology and at least one year of experience.",
     }
   );
 

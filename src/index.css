@@ -1,32 +1,73 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1 {
+  color: darkgreen;
+  text-align: center;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+h2 {
+  color: orange;
 }
 
-.multi-select-box {
-  border: 1px solid #ccc;
-  padding: 5px;
+.formContainer {
+  width: 50%;
+  margin: auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid #666;
+  padding: 20px;
+  box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.option {
-  background-color: #f9f9f9;
-  padding: 5px;
-  margin: 2px;
+.modal-container {
+  background-color: #333;
+  color: white;
+  width: 50%;
+  margin: auto;
+  border: 1px solid #666;
+  margin-top: 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-container > p,
+ul {
+  margin: 5px;
+  padding-left: 0px;
+}
+
+.formData-context {
+  font-weight: bold;
+}
+
+.error-message {
+  color: red;
+  font-size: 12px;
+}
+
+button {
+  width: 80%;
+  margin: 10px;
+  padding: 10px;
+  background-color: #666;
+  color: white;
+  border: none;
   cursor: pointer;
 }
 
-.option.selected {
-  background-color: #007bff;
-  color: #fff;
+button[type="submit"] {
+  background-color: blue;
+}
+
+.closeButton {
+  width: 28%;
+  background-color: #cb3a3a;
+  color: white;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
 }

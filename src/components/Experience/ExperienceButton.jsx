@@ -27,13 +27,13 @@ const ExperienceButton = ({
           checked={showExperienceButton}
           onChange={handleCheckboxChange}
         />
-        Doświadczenie w programowaniu
+        Programming experience
       </label>
       {errorMessage && <div className="error-message">{errorMessage}</div>}
       {showExperienceButton && (
         <div>
           <button onClick={handleClick} className="experienceButton">
-            Dodaj doświadczenie
+            Add experience
           </button>
           {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>

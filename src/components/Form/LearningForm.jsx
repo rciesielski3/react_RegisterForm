@@ -6,20 +6,20 @@ const LearningForm = ({
   setFormData,
   learningFormErrorMessage,
   preferredTechnologyErrorMessage,
-  registerLearningForm,
-  registerTechnology,
+  register,
 }) => {
   return (
     <>
       <div>
-        <h2>Wybierz formę nauki:</h2>
+        <h2>Choose a form of learning:</h2>
         {learningForms.map((form) => (
-          <label key={form} {...registerLearningForm("learningForm")}>
+          <label key={form}>
             <input
               type="radio"
               name="learningForm"
               value={form}
               checked={formData.learningForm === form}
+              {...register("learningForm")}
               onChange={(e) => {
                 const value = e.target.value;
                 setFormData({
@@ -31,17 +31,18 @@ const LearningForm = ({
             {form}
           </label>
         ))}
-        {/* Display error message if the field is empty and there's an error message */}
-        {learningFormErrorMessage && !formData.learningForm && (
+
+        {learningFormErrorMessage && (
           <div className="error-message">{learningFormErrorMessage}</div>
         )}
       </div>
       <div>
-        <h2>Wybierz preferowane technologie:</h2>
+        <h2>Choose preferred technologies:</h2>
         <select
           multiple
           size={preferredTechnology ? preferredTechnology.length : 0}
           value={formData.preferredTechnology}
+          {...register("preferredTechnology")}
           onChange={(e) => {
             setFormData({
               ...formData,
@@ -50,10 +51,7 @@ const LearningForm = ({
                 (option) => option.value
               ),
             });
-            registerTechnology("preferredTechnology");
           }}
-          // Register the preferredTechnology field
-          // {...registerTechnology("preferredTechnology")(e)}
         >
           {preferredTechnology.map((tech) => (
             <option key={tech} value={tech}>
@@ -61,8 +59,7 @@ const LearningForm = ({
             </option>
           ))}
         </select>
-        {/* Display error message if the field is empty and there's an error message */}
-        {preferredTechnologyErrorMessage && !formData.preferredTechnology && (
+        {preferredTechnologyErrorMessage && (
           <div className="error-message">{preferredTechnologyErrorMessage}</div>
         )}
       </div>

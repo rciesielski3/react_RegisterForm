@@ -44,30 +44,6 @@ ul {
   font-weight: bold;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="number"],
-select,
-textarea {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  box-sizing: border-box;
-  border: 1px solid #666;
-  background-color: transparent;
-  color: white;
-}
-
-.deleteButton,
-.closeButton {
-  width: 28%;
-  background-color: #cb3a3a;
-  color: white;
-  border: none;
-  margin: 5px;
-  cursor: pointer;
-}
-
 .error-message {
   color: red;
   font-size: 12px;
@@ -87,10 +63,11 @@ button[type="submit"] {
   background-color: blue;
 }
 
-button.deleteButton {
-  background-color: rgba(255, 0, 0, 0.48);
-}
-
-button.experienceButton {
-  background-color: green;
+.closeButton {
+  width: 28%;
+  background-color: #cb3a3a;
+  color: white;
+  border: none;
+  margin: 5px;
+  cursor: pointer;
 }

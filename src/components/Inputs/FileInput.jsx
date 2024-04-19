@@ -5,13 +5,12 @@ const FileInput = ({ register, name, errorMessage, handleDataChange }) => {
     const file = event.target.files[0];
     if (file) {
       handleDataChange(file);
-      register(name);
     }
   };
 
   return (
     <div>
-      <input type="file" onChange={handleFileChange} />
+      <input type="file" onClick={handleFileChange} {...register(name)} />
       {errorMessage && <span className="error-message">{errorMessage}</span>}
     </div>
   );

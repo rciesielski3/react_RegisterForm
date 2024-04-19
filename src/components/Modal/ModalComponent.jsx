@@ -4,40 +4,38 @@ import "./Modal.module.css";
 
 const ModalComponent = ({ formData, closeModal }) => {
   const [file, setFile] = useState(null);
+  console.log("ModalComponent formData" + JSON.stringify(formData));
+  console.log("formData.cvImage" + JSON.stringify(formData.cvImage));
   useEffect(() => {
     if (formData.cvImage) {
       setFile(formData.cvImage);
     }
   }, [formData.cvImage]);
-  console.log("file", file);
 
   const createCvPreview = file ? URL.createObjectURL(file) : "";
-  console.log("createCvPreview", createCvPreview);
 
   return (
     <Modal isOpen onRequestClose={closeModal} className="modal-container">
-      <h1>Dane z formularza</h1>
-      <h2>Dane osobowe:</h2>
+      <h1>Data from the register form</h1>
+      <h2>Personal data:</h2>
       <p>
-        Imię: <span className="formData-context">{formData.firstName}</span>
+        Name: <span className="formData-context">{formData.firstName}</span>
       </p>
       <p>
-        Nazwisko: <span className="formData-context">{formData.lastName}</span>
+        Surname: <span className="formData-context">{formData.lastName}</span>
       </p>
       <p>
-        Email: <span className="formData-context">{formData.email}</span>
+        E-mail: <span className="formData-context">{formData.email}</span>
       </p>
       <p>
-        Numer telefonu:
-        <span className="formData-context">{formData.phone}</span>
+        Phone: <span className="formData-context">{formData.phone}</span>
       </p>
-      <h2>Preferencje kursu:</h2>
+      <h2>Course preference:</h2>
       <p>
-        Typ kursu:{" "}
+        Learning form:{" "}
         <span className="formData-context">{formData.learningForm}</span>
       </p>
-      <p>Preferowane technologie:</p>
-
+      <p>Preferred technology:</p>
       {formData.preferredTechnology &&
       formData.preferredTechnology.length > 0 ? (
         <ul>
@@ -48,19 +46,19 @@ const ModalComponent = ({ formData, closeModal }) => {
           ))}
         </ul>
       ) : (
-        <p>Brak preferencji technologii</p>
+        <p>No technology preference</p>
       )}
       {formData.showExperienceButton &&
         formData.experienceList &&
         formData.experienceList.length > 0 && (
           <>
-            <h2>Doświadczenie w programowaniu:</h2>
+            <h2>Programming experience:</h2>
             {formData.experienceList.map((exp, index) => (
               <div key={index}>
                 <p>
-                  Technologia:
+                  Technology:
                   <span className="formData-context">{exp.technology}</span> /
-                  poziom:
+                  level:
                   <span className="formData-context">{exp.experience}</span>
                 </p>
               </div>
@@ -74,7 +72,7 @@ const ModalComponent = ({ formData, closeModal }) => {
         <p>No CV image provided</p>
       )}
       <button className="closeButton" onClick={closeModal}>
-        Zamknij
+        Close
       </button>
     </Modal>
   );

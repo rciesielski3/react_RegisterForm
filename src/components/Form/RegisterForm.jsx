@@ -22,16 +22,9 @@ const RegisterForm = () => {
   const [experienceList, setExperienceList] = useState([]);
   const [formData, setFormData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  console.log("formData", formData);
-  console.log("(Object.keys(errors)", Object.keys(errors));
 
   const handleFormSubmit = (formData) => {
-    // setFormData(formData);
-
-    // Check if there are any validation errors
-    if (Object.keys(errors).length === 0) {
-      setIsModalOpen(true);
-    }
+    setIsModalOpen(true);
   };
 
   const handleExperienceChange = (event) => {
@@ -71,23 +64,23 @@ const RegisterForm = () => {
   return (
     <div className="form-container">
       <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <h2>Dane osobowe:</h2>
+        <h2>Personal data:</h2>
         <TextInput
-          placeholder="Imię"
+          placeholder="Name"
           register={register}
           name="firstName"
           errorMessage={errors?.firstName?.message}
           updateFormData={handleDataChange}
         />
         <TextInput
-          placeholder="Nazwisko"
+          placeholder="Surname"
           register={register}
           name="lastName"
           errorMessage={errors?.lastName?.message}
           updateFormData={handleDataChange}
         />
         <TextInput
-          placeholder="Adres email"
+          placeholder="E-mail address"
           type="email"
           register={register}
           name="email"
@@ -95,7 +88,7 @@ const RegisterForm = () => {
           updateFormData={handleDataChange}
         />
         <TextInput
-          placeholder="Numer telefonu"
+          placeholder="Phone number"
           type="number"
           register={register}
           name="phone"
@@ -107,8 +100,7 @@ const RegisterForm = () => {
           setFormData={setFormData}
           learningFormErrorMessage={errors?.learningForm?.message}
           preferredTechnologyErrorMessage={errors?.preferredTechnology?.message}
-          registerLearningForm={register}
-          registerTechnology={register}
+          register={register}
         />
 
         <ExperienceButton
@@ -128,7 +120,7 @@ const RegisterForm = () => {
             register={register}
           />
         ))}
-        <h2>Dodaj swoje CV:</h2>
+        <h2>Add CV:</h2>
         <FileInput
           name="cvImage"
           errorMessage={errors?.cvImage?.message}
@@ -136,7 +128,7 @@ const RegisterForm = () => {
           register={register}
         />
 
-        <button type="submit">Wyślij</button>
+        <button type="submit">Send</button>
       </form>
       {isModalOpen && (
         <ModalComponent formData={formData} closeModal={closeModal} />

@@ -27,7 +27,7 @@ const ExperienceForm = ({
         {...register("technology")}
       >
         <option value="" hidden>
-          Wybierz technologię
+          Choose technology
         </option>
         {preferredTechnology.map((tech, idx) => (
           <option key={idx} value={tech}>
@@ -43,7 +43,7 @@ const ExperienceForm = ({
         {...register("experienceYears")}
       >
         <option value="" hidden>
-          Wybierz doświadczenie
+          Choose an experience
         </option>
         {experienceYears.map((year, idx) => (
           <option key={idx} value={year}>
