@@ -24,6 +24,7 @@ const RegisterForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFormSubmit = (formData) => {
+    handleDataChange("experienceList", experienceList);
     setIsModalOpen(true);
   };
 
@@ -46,6 +47,7 @@ const RegisterForm = () => {
     newList[index][key] = value;
     setExperienceList(newList);
   };
+
   const handleDataChange = (name, value) => {
     setFormData((formData) => ({
       ...formData,
@@ -116,7 +118,7 @@ const RegisterForm = () => {
             rowData={exp}
             handleDeleteRow={handleDeleteRow}
             handleExperienceList={handleExperienceList}
-            errorMessage={errors?.preferredTechnology?.message}
+            errorMessage={errors?.preferredTechnologyExp?.message}
             register={register}
           />
         ))}
@@ -124,7 +126,7 @@ const RegisterForm = () => {
         <FileInput
           name="cvImage"
           errorMessage={errors?.cvImage?.message}
-          handleDataChange={(file) => handleDataChange("cvImage", file)}
+          handleDataChange={handleDataChange}
           register={register}
         />
 

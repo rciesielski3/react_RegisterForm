@@ -7,15 +7,11 @@ const ExperienceForm = ({
   handleDeleteRow,
   handleExperienceList,
   errorMessage,
-  register,
 }) => {
   const handleDeleteClick = (event) => {
     event.preventDefault();
     handleDeleteRow(index);
   };
-
-  const isTechnologySelected = rowData.technology !== "";
-  const isExperienceSelected = rowData.experience !== "";
 
   return (
     <div>
@@ -24,7 +20,7 @@ const ExperienceForm = ({
         onChange={(e) =>
           handleExperienceList(index, "technology", e.target.value)
         }
-        {...register("technology")}
+        name={`technology-${index}`}
       >
         <option value="" hidden>
           Choose technology
@@ -40,7 +36,7 @@ const ExperienceForm = ({
         onChange={(e) =>
           handleExperienceList(index, "experience", e.target.value)
         }
-        {...register("experienceYears")}
+        name={`experienceYears-${index}`}
       >
         <option value="" hidden>
           Choose an experience
@@ -51,9 +47,7 @@ const ExperienceForm = ({
           </option>
         ))}
       </select>
-      {!isTechnologySelected && !isExperienceSelected && errorMessage && (
-        <div className="error-message">{errorMessage}</div>
-      )}
+      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <button onClick={handleDeleteClick} className="deleteButton">
         Delete
       </button>

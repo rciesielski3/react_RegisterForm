@@ -4,7 +4,7 @@ const FileInput = ({ register, name, errorMessage, handleDataChange }) => {
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
-      handleDataChange(file);
+      handleDataChange(name, file);
     }
   };
 

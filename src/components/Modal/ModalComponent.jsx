@@ -46,23 +46,29 @@ const ModalComponent = ({ formData, closeModal }) => {
       ) : (
         <p>No technology preference</p>
       )}
-      {formData.showExperienceButton &&
-        formData.experienceList &&
-        formData.experienceList.length > 0 && (
-          <>
-            <h2>Programming experience:</h2>
-            {formData.experienceList.map((exp, index) => (
-              <div key={index}>
-                <p>
-                  Technology:
-                  <span className="formData-context">{exp.technology}</span> /
-                  level:
-                  <span className="formData-context">{exp.experience}</span>
-                </p>
-              </div>
-            ))}
-          </>
-        )}
+      {formData.experienceList && formData.experienceList.length > 0 && (
+        <>
+          <h2>Programming experience:</h2>
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Technology </th>
+                  <th>Level</th>
+                </tr>
+              </thead>
+              <tbody>
+                {formData.experienceList.map((exp, index) => (
+                  <tr key={index}>
+                    <td>{exp.technology} </td>
+                    <td>{exp.experience} </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
+      )}
       <h2>Curriculum Vitae:</h2>
       {formData.cvImage ? (
         <img src={createCvPreview} alt="CV" />

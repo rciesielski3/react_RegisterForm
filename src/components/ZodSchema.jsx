@@ -44,8 +44,8 @@ const schema = z
     (data) => {
       if (data.hasExperience) {
         if (
-          !data.preferredTechnology ||
-          data.preferredTechnology.length === 0 ||
+          !data.experienceList ||
+          data.experienceList.length === 0 ||
           !data.experienceYears ||
           data.experienceYears.length === 0
         ) {
