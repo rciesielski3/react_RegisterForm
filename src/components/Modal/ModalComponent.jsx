@@ -58,12 +58,14 @@ const ModalComponent = ({ formData, closeModal }) => {
                 </tr>
               </thead>
               <tbody>
-                {formData.experienceList.map((exp, index) => (
-                  <tr key={index}>
-                    <td>{exp.technology} </td>
-                    <td>{exp.experience} </td>
-                  </tr>
-                ))}
+                {formData.experienceList
+                  .filter((exp) => exp.technology && exp.experience) // Filter out empty records
+                  .map((exp, index) => (
+                    <tr key={index}>
+                      <td>{exp.technology} </td>
+                      <td>{exp.experience} </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>
