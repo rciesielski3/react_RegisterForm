@@ -29,23 +29,39 @@ const ModalComponent = ({ formData, closeModal }) => {
         Phone: <span className="formData-context">{formData.phone}</span>
       </p>
       <h2>Course preference:</h2>
-      <p>
-        Learning form:{" "}
-        <span className="formData-context">{formData.learningForm}</span>
-      </p>
-      <p>Preferred technology:</p>
-      {formData.preferredTechnology &&
-      formData.preferredTechnology.length > 0 ? (
-        <ul>
-          {formData.preferredTechnology.map((tech, index) => (
-            <li key={index}>
-              <span className="formData-context">{tech}</span>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No technology preference</p>
-      )}
+      <div className="table-container">
+        <table>
+          <tbody>
+            <tr>
+              <td>Learning Form</td>
+              <td>
+                <span className="formData-context">
+                  {formData.learningForm}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Preferred Technology</td>
+              <td>
+                {formData.preferredTechnology &&
+                formData.preferredTechnology.length > 0 ? (
+                  <ul>
+                    {formData.preferredTechnology.map((tech, index) => (
+                      <li key={index}>
+                        <span className="formData-context">{tech}</span>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <span className="formData-context">
+                    "No technology preference"
+                  </span>
+                )}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
       {formData.experienceList && formData.experienceList.length > 0 && (
         <>
           <h2>Programming experience:</h2>

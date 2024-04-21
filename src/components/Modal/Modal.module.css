@@ -33,18 +33,11 @@ h2 {
   width: 50%;
   margin: auto;
   border: 1px solid #666;
-  margin-top: 20px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-
-.modal-container > p,
-ul {
-  margin: 5px;
-  padding-left: 0px;
 }
 
 .formData-context {
