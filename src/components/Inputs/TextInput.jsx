@@ -6,11 +6,11 @@ const TextInput = ({
   register,
   name,
   errorMessage,
-  updateFormData,
+  // updateFormData,
 }) => {
   const handleChange = (event) => {
     const { value } = event.target;
-    updateFormData(name, value);
+    // updateFormData(name, value);
   };
 
   return (
@@ -20,7 +20,7 @@ const TextInput = ({
         type={type}
         {...register(name)}
         className={errorMessage ? "error" : ""}
-        onChange={handleChange}
+        // onChange={handleChange}
       />
       {errorMessage && <span className="error-message">{errorMessage}</span>}
     </div>

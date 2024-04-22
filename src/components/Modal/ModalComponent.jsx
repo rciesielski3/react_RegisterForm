@@ -5,8 +5,9 @@ import "./Modal.module.css";
 const ModalComponent = ({ formData, closeModal }) => {
   const [file, setFile] = useState(null);
   useEffect(() => {
-    if (formData.cvImage) {
-      setFile(formData.cvImage);
+    if (formData.cvImage && formData.cvImage.length > 0) {
+      const cvFile = formData.cvImage[0];
+      setFile(cvFile);
     }
   }, [formData.cvImage]);
 

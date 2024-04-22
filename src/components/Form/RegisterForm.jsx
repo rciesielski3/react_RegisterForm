@@ -15,6 +15,7 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm({
     resolver: zodResolver(schema),
   });
@@ -24,8 +25,8 @@ const RegisterForm = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleFormSubmit = (formData) => {
-    handleDataChange("experienceList", experienceList);
     setIsModalOpen(true);
+    console.log("handleFormSubmit Form Data:", formData);
   };
 
   const handleExperienceChange = (event) => {
@@ -46,6 +47,9 @@ const RegisterForm = () => {
     const newList = [...experienceList];
     newList[index][key] = value;
     setExperienceList(newList);
+    handleDataChange("experienceList", experienceList);
+    const hasExperience = newList.length > 0;
+    handleDataChange("hasExperience", hasExperience);
   };
 
   const handleDataChange = (name, value) => {
@@ -72,14 +76,12 @@ const RegisterForm = () => {
           register={register}
           name="firstName"
           errorMessage={errors?.firstName?.message}
-          updateFormData={handleDataChange}
         />
         <TextInput
           placeholder="Surname"
           register={register}
           name="lastName"
           errorMessage={errors?.lastName?.message}
-          updateFormData={handleDataChange}
         />
         <TextInput
           placeholder="E-mail address"
@@ -87,7 +89,6 @@ const RegisterForm = () => {
           register={register}
           name="email"
           errorMessage={errors?.email?.message}
-          updateFormData={handleDataChange}
         />
         <TextInput
           placeholder="Phone number"
@@ -95,7 +96,6 @@ const RegisterForm = () => {
           register={register}
           name="phone"
           errorMessage={errors?.phone?.message}
-          updateFormData={handleDataChange}
         />
         <LearningForm
           formData={formData}
@@ -110,6 +110,8 @@ const RegisterForm = () => {
           handleExperienceChange={handleExperienceChange}
           handleAddExperience={handleAddExperience}
           clearExperienceList={clearExperienceList}
+          errorMessage={errors?.hasExperience?.message}
+          register={register}
         />
         {experienceList.map((exp, index) => (
           <ExperienceForm
@@ -118,8 +120,6 @@ const RegisterForm = () => {
             rowData={exp}
             handleDeleteRow={handleDeleteRow}
             handleExperienceList={handleExperienceList}
-            errorMessage={errors?.preferredTechnologyExp?.message}
-            register={register}
           />
         ))}
         <h2>Add CV:</h2>
@@ -133,7 +133,7 @@ const RegisterForm = () => {
         <button type="submit">Send</button>
       </form>
       {isModalOpen && (
-        <ModalComponent formData={formData} closeModal={closeModal} />
+        <ModalComponent formData={getValues()} closeModal={closeModal} />
       )}
     </div>
   );

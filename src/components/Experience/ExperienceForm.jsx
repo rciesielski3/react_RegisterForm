@@ -6,7 +6,6 @@ const ExperienceForm = ({
   index,
   handleDeleteRow,
   handleExperienceList,
-  errorMessage,
 }) => {
   const handleDeleteClick = (event) => {
     event.preventDefault();
@@ -47,7 +46,6 @@ const ExperienceForm = ({
           </option>
         ))}
       </select>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
       <button onClick={handleDeleteClick} className="deleteButton">
         Delete
       </button>

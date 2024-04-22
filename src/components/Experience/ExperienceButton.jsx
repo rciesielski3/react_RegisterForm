@@ -6,6 +6,7 @@ const ExperienceButton = ({
   handleAddExperience,
   clearExperienceList,
   errorMessage,
+  register,
 }) => {
   const handleClick = (event) => {
     event.preventDefault();
@@ -25,18 +26,20 @@ const ExperienceButton = ({
         <input
           type="checkbox"
           checked={showExperienceButton}
+          {...register("hasExperience")}
           onChange={handleCheckboxChange}
         />
         Programming experience
       </label>
-      {errorMessage && <div className="error-message">{errorMessage}</div>}
       {showExperienceButton && (
         <div>
           <button onClick={handleClick} className="experienceButton">
             Add experience
           </button>
-          {errorMessage && <div className="error-message">{errorMessage}</div>}
         </div>
+      )}
+      {showExperienceButton && errorMessage && (
+        <div className="error-message">{errorMessage}</div>
       )}
     </div>
   );
