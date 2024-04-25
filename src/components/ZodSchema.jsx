@@ -17,21 +17,6 @@ const schema = z.object({
     .array(z.string())
     .min(1, { message: "Select at least 1 technology." }),
   hasExperience: z.boolean().optional(),
-  programmingExperience: z
-    .object({
-      technology: z.string(),
-      proficiency: z.string(),
-    })
-    .optional(),
-  experienceList: z
-    .array(
-      z.object({
-        technology: z.string(),
-        experience: z.string(),
-      })
-    )
-    .optional(),
-  experienceYears: z.array(z.string()).optional(),
   cvImage: z
     .any()
     .refine((file) => file?.length >= 1, { message: "Image is required." })

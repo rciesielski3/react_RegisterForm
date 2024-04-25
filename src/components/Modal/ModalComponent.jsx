@@ -76,7 +76,7 @@ const ModalComponent = ({ formData, closeModal }) => {
               </thead>
               <tbody>
                 {formData.experienceList
-                  .filter((exp) => exp.technology && exp.experience) // Filter out empty records
+                  .filter((exp) => exp.technology && exp.experience)
                   .map((exp, index) => (
                     <tr key={index}>
                       <td>{exp.technology} </td>

@@ -2,8 +2,9 @@ import { experienceYears, preferredTechnology } from "../../assets/data";
 import "./Experience.modules.css";
 
 const ExperienceForm = ({
-  rowData,
   index,
+  rowData,
+  register,
   handleDeleteRow,
   handleExperienceList,
 }) => {
@@ -16,6 +17,7 @@ const ExperienceForm = ({
     <div>
       <select
         value={rowData.technology}
+        {...register(`technology-${index}`)}
         onChange={(e) =>
           handleExperienceList(index, "technology", e.target.value)
         }
@@ -32,6 +34,7 @@ const ExperienceForm = ({
       </select>
       <select
         value={rowData.experience}
+        {...register(`experienceYears-${index}`)}
         onChange={(e) =>
           handleExperienceList(index, "experience", e.target.value)
         }

@@ -14,6 +14,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
     getValues,
   } = useForm({
@@ -26,7 +27,6 @@ const RegisterForm = () => {
 
   const handleFormSubmit = (formData) => {
     setIsModalOpen(true);
-    console.log("handleFormSubmit Form Data:", formData);
   };
 
   const handleExperienceChange = (event) => {
@@ -47,9 +47,7 @@ const RegisterForm = () => {
     const newList = [...experienceList];
     newList[index][key] = value;
     setExperienceList(newList);
-    handleDataChange("experienceList", experienceList);
-    const hasExperience = newList.length > 0;
-    handleDataChange("hasExperience", hasExperience);
+    register(...[`experienceList[${index}].${key}`, { value: value }]);
   };
 
   const handleDataChange = (name, value) => {
@@ -61,6 +59,7 @@ const RegisterForm = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+    reset();
   };
 
   const clearExperienceList = () => {
@@ -118,6 +117,7 @@ const RegisterForm = () => {
             key={index}
             index={index}
             rowData={exp}
+            register={register}
             handleDeleteRow={handleDeleteRow}
             handleExperienceList={handleExperienceList}
           />
