@@ -1,26 +1,22 @@
-Stwórz Formularz rejestracyjny
+# react_RegisterForm
 
-Treść zadania:
-Celem tej pracy domowej jest stworzenie formularza rejestracyjnego dla szkoły programowania, używając React,  zod do walidacji danych oraz react-hook-form do obsługi formularza. Formularz powinien umożliwić użytkownikowi wprowadzenie danych osobowych, preferencji dotyczących kursu, załączenie CV w formacie obrazu oraz informacji o doświadczeniu w programowaniu. Po przesłaniu formularza, dane powinny zostać zweryfikowane, a następnie wyświetlone w modalu. Do stylowania użyj CSS w JS lub CSS modules. 
+A course-registration form for a programming school, built with React, `react-hook-form` and `zod`.
 
-Wytyczne:
-Dane osobowe: Użytkownik podaje swoje imię, nazwisko, adres e-mail oraz numer telefonu.
+**Features**
 
-Walidacja:
-Imię - minimum 3 znaki.
-Nazwisko - minimum 3 znaki.
-E-mail - poprawny adres e-mail.
-Numer telefonu - 9 cyfr.
+- Personal data with schema validation (name and surname min. 3 characters, valid e-mail, 9-digit phone)
+- Course preferences: mode (on-site / online) and at least one technology
+- CV upload restricted to JPEG/PNG, validated by file type
+- Optional programming experience list (technology + level); required to be non-empty when the box is checked
+- Validated data is shown in a modal after submit
 
-Preferencje kursu: 
-Użytkownik wybiera formę nauki (stacjonarnie lub online) oraz przynajmniej jedną preferowaną technologię spośród dostępnych opcji.
+**Run**
 
-Załączanie CV: 
-Użytkownik musi załączyć swoje CV w formie zdjęcia (format: JPEG lub PNG). System waliduje typ przesłanego pliku.
-Doświadczenie w programowaniu: Użytkownik ma możliwość zaznaczenia, czy posiada doświadczenie w programowaniu. Jeśli tak, może dodać jedną lub więcej technologii programowania wraz z poziomem zaawansowania. Lista doświadczeń nie może być pusta, jeśli użytkownik zaznaczy, że posiada doświadczenie.
+```bash
+npm install
+npm start     # dev server
+npm test
+npm run build
+```
 
-Przesłanie formularza:
-Po wypełnieniu formularza, dane są walidowane zgodnie ze schematem zod. Jeśli walidacja przebiegnie pomyślnie, formularz jest przesyłany, a dane wyświetlane są w modalu. W przypadku błędów, użytkownik zostanie o nich poinformowany.
-
-Wygląd formularza:
-Upewnij się, że wygląd formularza jest spójny i estetyczny, aby zapewnić pozytywne wrażenia użytkownika oraz łatwą nawigację.
+Originally a homework assignment (task description in Polish, removed from this README).
